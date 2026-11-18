@@ -11,16 +11,31 @@
             height: fit-content;
             padding: 20px;
             margin: 15vh auto;
-            border: 1px solid black;
+            border: 1px solid #d8cbb9;
             border-radius: 30px;
-            background-color: antiquewhite
+            background-color: #f5ecdf;
+            box-shadow: 0 5px 15px rgba(100, 80, 60, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            color: #3f3831;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #65594d;
         }
 
         .viewer {
             width: 400px;
             height: 50px;
             margin: 10px auto;
-            background-color: white;
+            background-color: #fffdf9;
+            border: 1px solid #e6ddd0;
+            border-radius: 8px;
             padding-left: 10px;
             box-sizing: border-box;
             font-size: 20px;
@@ -28,6 +43,8 @@
 
         .result {
             font-size: 20px;
+            color: #65594d;
+            text-align: center;
         }
 
         .buttons {
@@ -41,19 +58,23 @@
             gap: 10px 10px;
             justify-content: space-between;
             align-items: center;
-            background-color: cornsilk;
+            background-color: #fbf7ee;
 
             button {
                 width: 40px;
                 height: 30px;
-                background-color: khaki;
+                background-color: #e9dcae;
+                border: 1px solid #e1d3a3;
+                border-radius: 7px;
+                color: #625747;
+                cursor: pointer;
+                transition: 0.2s;
             }
 
             button:hover {
-                background-color: darksalmon;
-                transform: scale(1.1);
+                background-color: #e8bba8;
+                transform: scale(1.08);
             }
-
         }
     </style>
 </head>
@@ -133,72 +154,72 @@
             document.getElementById("viewer").value = text
         }
         function point() {
-            if (text[text.length - 1]!=".") {
+            if (text[text.length - 1] != ".") {
                 text += "."
             }
-            
+
             document.getElementById("viewer").value = text
         }
         function add() {
-            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
-                text = text.slice(0,-1)
+            if (["+", "-", "/", "*", "%"].includes(text[text.length - 1])) {
+                text = text.slice(0, -1)
                 text += "+"
-            }else{
+            } else {
                 text += "+"
             }
-            
+
             document.getElementById("viewer").value = text
         }
         function sub() {
-            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
-                text = text.slice(0,-1)
-                text += "+"
-            }else{
-                text += "+"
+            if (["+", "-", "/", "*", "%"].includes(text[text.length - 1])) {
+                text = text.slice(0, -1)
+                text += "-"
+            } else {
+                text += "-"
             }
-            
+
             document.getElementById("viewer").value = text
         }
         function mul() {
-            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
-                text = text.slice(0,-1)
+            if (["+", "-", "/", "*", "%"].includes(text[text.length - 1])) {
+                text = text.slice(0, -1)
                 text += "*"
-            }else{
+            } else {
                 text += "*"
             }
-            
+
             document.getElementById("viewer").value = text
         }
         function div() {
-            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
-                text = text.slice(0,-1)
+            if (["+", "-", "/", "*", "%"].includes(text[text.length - 1])) {
+                text = text.slice(0, -1)
                 text += "/"
-            }else{
+            } else {
                 text += "/"
             }
-            
+
             document.getElementById("viewer").value = text
         }
         function percentage() {
-            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
-                text = text.slice(0,-1)
+            if (["+", "-", "/", "*", "%"].includes(text[text.length - 1])) {
+                text = text.slice(0, -1)
                 text += "%"
-            }else{
+            } else {
                 text += "%"
             }
-            
+
             document.getElementById("viewer").value = text
         }
         function sign() {
-            if (text[text.length - 1]=="-"){
-                text = text.slice(0,-1)
+            if (text[text.length - 1] == "-") {
+                text = text.slice(0, -1)
                 text += "+"
             }
-            else{
-                text = text.slice(0,-1)
+            else {
+                text = text.slice(0, -1)
                 text += "-"
             }
-            
+
             document.getElementById("viewer").value = text
         }
         function calculate() {

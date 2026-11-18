@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shopping Cart</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            color: #25476A;
+        }
+
+        .container {
+            width: 550px;
+            height: fit-content;
+            margin: 15vh auto;
+        }
+
+        h1 {
+            color: #3478B9;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            color: #7899B8;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .inputs {
+            width: 100%;
+            height: 65px;
+            padding: 0 12px;
+            border-radius: 12px;
+            background-color: #C5E5FA;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 10px;
+        }
+
+        .item {
+            width: 150px;
+            height: 35px;
+            font-size: 14px;
+            flex: 1;
+            border-radius: 8px;
+            border: 1px solid #D4E9F8;
+            padding-left: 10px;
+            outline: none;
+        }
+
+        .count {
+            width: 60px;
+            height: 35px;
+            font-size: 14px;
+            border-radius: 8px;
+            border: 1px solid #D4E9F8;
+            padding-left: 8px;
+            outline: none;
+        }
+
+        .price {
+            width: 100px;
+            height: 35px;
+            font-size: 14px;
+            border-radius: 8px;
+            border: 1px solid #D4E9F8;
+            padding-left: 10px;
+            outline: none;
+        }
+
+        .inputs input:focus {
+            border: 2px solid #69AEE0;
+        }
+
+        .inputs button {
+            width: 50px;
+            height: 35px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #438FCB;
+            color: white;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .inputs button:hover {
+            background-color: #2876B5;
+            cursor: pointer;
+        }
+
+        .cart {
+            width: 100%;
+            height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 12px;
+            background-color: #DCEFFA;
+            overflow-y: auto;
+            overflow-x: hidden;
+
+        }
+
+        .cartItem {
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .del {
+            width: 30px;
+            height: 30px;
+            line-height: 20px;
+            margin: 10px auto;
+            background-color: #FF8E9E;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-align: center;
+            border: none;
+        }
+
+        .del:hover {
+            background-color: #F45F79;
+            cursor: pointer;
+        }
+
+        .newItem {
+            width: 300px;
+            height: 35px;
+            line-height: 35px;
+            margin: 10px auto;
+            background-color: white;
+            color: #3478B9;
+            font-size: 14px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .newCount {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            margin: 10px auto;
+            background-color: white;
+            color: #3478B9;
+            font-size: 14px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .newPrice {
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            margin: 10px auto;
+            background-color: white;
+            color: #3478B9;
+            font-size: 14px;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to The Shopping Cart!</h1>
+        <p>enter your item, the count and the price and then click on add ...</p>
+        <div class="inputs">
+            <input type="text" class="item" id="item" placeholder="item's name">
+            <input type="number" class="count" id="count" placeholder="count">
+            <input type="text" class="price" id="price" placeholder="price">
+            <button onclick="addItem()">add</button>
+        </div>
+        <div class="cart" id="cart">
+
+        </div>
+    </div>
+
+    <script>
+        let text = ""
+        function addItem() {
+
+            let item = document.getElementById("item").value
+            let count = document.getElementById("count").value
+            let price = document.getElementById("price").value
+
+            if (item != "" && count != "" && price != "") {
+
+                let cartItem = document.createElement("div")
+                cartItem.className = "cartItem"
+
+                let del = document.createElement("button")
+                del.className = "del"
+                del.textContent = "X"
+
+                del.addEventListener("click", function () {
+                    cartItem.remove()
+                })
+
+                let newItem = document.createElement("div")
+                newItem.className = "newItem"
+                newItem.textContent = item
+
+                let newCount = document.createElement("div")
+                newCount.className = "newCount"
+                newCount.textContent = `(${count})`
+
+                let newPrice = document.createElement("div")
+                newPrice.className = "newPrice"
+                newPrice.textContent = String(price * count) + "$"
+
+                cartItem.appendChild(del)
+                cartItem.appendChild(newItem)
+                cartItem.appendChild(newCount)
+                cartItem.appendChild(newPrice)
+
+                document.getElementById("cart").appendChild(cartItem)
+
+                document.getElementById("item").value = ""
+                document.getElementById("count").value = ""
+                document.getElementById("price").value = ""
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
