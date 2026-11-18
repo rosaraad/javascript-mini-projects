@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tip Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: whitesmoke;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 600px;
+            height: fit-content;
+            padding: 10px 25px;
+            margin: 20vh auto;
+            border-radius: 10px;
+            background-color: rgb(237, 215, 184);
+            box-shadow: 0 0 15px rgb(166, 164, 164);
+        }
+
+        h1 {
+            color: rgb(40, 38, 38);
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            color: rgb(71, 58, 58);
+            text-align: left;
+            font-size: 16px;
+        }
+
+        input {
+            width: 100%;
+            height: 40px;
+            border-radius: 6px;
+            border: 1px solid lightgray;
+            padding-left: 15px;
+        }
+
+        input:hover{
+            border-color: rgb(100, 78, 48);
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            background-color: rgb(132, 103, 65);
+            border: none;
+            color: white;
+            font-size: 18px;
+            margin-top: 25px;
+        }
+
+        button:hover{
+            cursor: pointer;
+            background-color: rgb(100, 78, 48);
+        }
+
+        .result {
+            width: 100%;
+            height: 40px;
+            margin-top: 25px;
+            font-size: 16px;
+            color: rgb(40, 38, 38);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to The Tip Caulculator!</h1>
+        <p>Enter the bill amount and tip percentage to calculate the total ...</p>
+        <p class="label">Bill amount:</p>
+        <input class="bill" type="number">
+        <p class="label">Tip percentage:</p>
+        <input class="tip" type="number">
+        <button onclick="calculate()">CALCULATE</button>
+        <div class="result">Total :</div>
+    </div>
+
+    <script>
+        function calculate(){
+            let bill = Number(document.querySelector(".bill").value)
+            let tip = Number(document.querySelector(".tip").value)
+            let result = bill + (bill*tip/100)
+            document.querySelector(".result").innerText = "Total : "+result
+            console.log(result)
+        }
+    </script>
+</body>
+
+</html>
