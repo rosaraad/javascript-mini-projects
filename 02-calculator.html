@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Calculator</title>
+    <style>
+        .container {
+            width: fit-content;
+            height: fit-content;
+            padding: 20px;
+            margin: 15vh auto;
+            border: 1px solid black;
+            border-radius: 30px;
+            background-color: antiquewhite
+        }
+
+        .viewer {
+            width: 400px;
+            height: 50px;
+            margin: 10px auto;
+            background-color: white;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+
+        .result {
+            font-size: 20px;
+        }
+
+        .buttons {
+            width: 200px;
+            height: fit-content;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 10px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: cornsilk;
+
+            button {
+                width: 40px;
+                height: 30px;
+                background-color: khaki;
+            }
+
+            button:hover {
+                background-color: darksalmon;
+                transform: scale(1.1);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to The Caulculator!</h1>
+        <p>click on the buttons to choose your operation ...</p>
+        <input class="viewer" id="viewer" disabled></input>
+        <p class="result" id="result">result = </p>
+        <div class="buttons">
+            <button onclick="del()">del</button>
+            <button onclick="ac()">AC</button>
+            <button onclick="percentage()">%</button>
+            <button onclick="div()">/</button>
+            <button onclick="number7()">7</button>
+            <button onclick="number8()">8</button>
+            <button onclick="number9()">9</button>
+            <button onclick="mul()">*</button>
+            <button onclick="number4()">4</button>
+            <button onclick="number5()">5</button>
+            <button onclick="number6()">6</button>
+            <button onclick="sub()">-</button>
+            <button onclick="number1()">1</button>
+            <button onclick="number2()">2</button>
+            <button onclick="number3()">3</button>
+            <button onclick="add()">+</button>
+            <button onclick="sign()">+/-</button>
+            <button onclick="number0()">0</button>
+            <button onclick="point()">.</button>
+            <button onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let text = ""
+        let result = ""
+
+        function number0() {
+            text += 0
+            document.getElementById("viewer").value = text
+        }
+        function number1() {
+            text += 1
+            document.getElementById("viewer").value = text
+        }
+        function number2() {
+            text += 2
+            document.getElementById("viewer").value = text
+        }
+        function number3() {
+            text += 3
+            document.getElementById("viewer").value = text
+        }
+        function number4() {
+            text += 4
+            document.getElementById("viewer").value = text
+        }
+        function number5() {
+            text += 5
+            document.getElementById("viewer").value = text
+        }
+        function number6() {
+            text += 6
+            document.getElementById("viewer").value = text
+        }
+        function number7() {
+            text += 7
+            document.getElementById("viewer").value = text
+        }
+        function number8() {
+            text += 8
+            document.getElementById("viewer").value = text
+        }
+        function number9() {
+            text += 9
+            document.getElementById("viewer").value = text
+        }
+        function point() {
+            if (text[text.length - 1]!=".") {
+                text += "."
+            }
+            
+            document.getElementById("viewer").value = text
+        }
+        function add() {
+            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
+                text = text.slice(0,-1)
+                text += "+"
+            }else{
+                text += "+"
+            }
+            
+            document.getElementById("viewer").value = text
+        }
+        function sub() {
+            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
+                text = text.slice(0,-1)
+                text += "+"
+            }else{
+                text += "+"
+            }
+            
+            document.getElementById("viewer").value = text
+        }
+        function mul() {
+            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
+                text = text.slice(0,-1)
+                text += "*"
+            }else{
+                text += "*"
+            }
+            
+            document.getElementById("viewer").value = text
+        }
+        function div() {
+            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
+                text = text.slice(0,-1)
+                text += "/"
+            }else{
+                text += "/"
+            }
+            
+            document.getElementById("viewer").value = text
+        }
+        function percentage() {
+            if (["+","-","/","*","%"].includes(text[text.length - 1])) {
+                text = text.slice(0,-1)
+                text += "%"
+            }else{
+                text += "%"
+            }
+            
+            document.getElementById("viewer").value = text
+        }
+        function sign() {
+            if (text[text.length - 1]=="-"){
+                text = text.slice(0,-1)
+                text += "+"
+            }
+            else{
+                text = text.slice(0,-1)
+                text += "-"
+            }
+            
+            document.getElementById("viewer").value = text
+        }
+        function calculate() {
+            result = eval(text);
+            document.getElementById("result").innerHTML = "result = " + result
+        }
+        function ac() {
+            text = ""
+            document.getElementById("viewer").value = text
+            result = "";
+            document.getElementById("result").innerHTML = "result = " + result
+        }
+        function del() {
+            text = text.slice(0, -1)
+            document.getElementById("viewer").value = text
+        }
+    </script>
+</body>
+
+</html>

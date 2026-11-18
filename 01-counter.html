@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mini Counter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: bisque;
+            width: fit-content;
+            height: fit-content;
+            margin: 30vh auto;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+
+        .counter {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .buttons{
+            width: fit-content;
+            height: fit-content;
+            margin: 20px auto;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Mini Counter!</h1>
+        <p>click on the buttons to set the counter ...</p>
+        <div class="counter" id="counter">0</div>
+        <div class="buttons">
+            <button onclick="increase()">+</button>
+            <button onclick="decrease()">-</button>
+            <button onclick="reset()">reset</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0
+
+        function increase() {
+            count += 1
+            document.getElementById("counter").innerHTML = count
+        }
+
+        function decrease() {
+            if (count - 1 >= 0) {
+                count -= 1
+            }
+            document.getElementById("counter").innerHTML = count
+        }
+
+        function reset() {
+            count = 0
+            document.getElementById("counter").innerHTML = count
+        }
+    </script>
+</body>
+
+</html>
