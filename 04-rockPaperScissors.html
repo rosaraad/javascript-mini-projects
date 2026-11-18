@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: fit-content;
+            height: fit-content;
+            padding: 25px;
+            margin: 25vh auto;
+            border: 1px solid #edc6d7;
+            border-radius: 25px;
+            background-color: #fce4ec;
+            box-shadow: 0 8px 20px rgba(177, 50, 113, 0.10);
+        }
+
+        h1 {
+            color: #b34d7e;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            color: #ad6b89;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .moves {
+            width: 270px;
+            height: fit-content;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .move {
+                width: fit-content;
+                height: fit-content;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: #fff1f5;
+                border: 1px solid #edc6d7;
+                color: #98516e;
+                transition: 0.2s;
+                box-shadow: 0 2px 5px rgba(150, 70, 100, 0.06);
+            }
+
+            .move:hover {
+                background-color: #f5c5d7;
+                cursor: pointer;
+                box-shadow: 0 4px 8px rgba(150, 70, 100, 0.12);
+            }
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 12px;
+            border-radius: 10px;
+            background-color: #fff1f5;
+            border: 1px solid #edc6d7;
+            color: #98516e;
+            line-height: 2;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to The Rock Paper Scissors Game!</h1>
+        <p>choose a move and play against the computer ...</p>
+        <div class="moves">
+            <button class="move" onclick="rock()">🪨 Rock</button>
+            <button class="move" onclick="paper()">📄 Paper</button>
+            <button class="move" onclick="scissors()">✂️ Scissors</button>
+        </div>
+        <p id="result"></p>
+
+    </div>
+
+    <script>
+        let user = ""
+        let comp = ""
+        let winner = ""
+        function compMove() {
+            let rand = Math.random()
+            if (rand < 1 / 3) {
+                return "rock"
+            } else if (rand < 2 / 3) {
+                return "paper"
+            } else {
+                return "scissors"
+            }
+        }
+        function play(user, comp) {
+            if ((user == "rock" && comp == "paper") ||
+                (user == "paper" && comp == "scissors") ||
+                (user == "scissors" && comp == "rock")) {
+                return "computer"
+            } else if ((comp == "rock" && user == "paper") ||
+                (comp == "paper" && user == "scissors") ||
+                (comp == "scissors" && user == "rock")) {
+                return "user"
+            } else {
+                return "It is a tie!"
+            }
+        }
+        function showResult() {
+            text = `You chose --> ${user} <br>
+            Computer chose --> ${comp} <br>
+            THE WINNER IS : ${winner.toUpperCase()}`
+            console.log(text)
+            document.getElementById("result").innerHTML = text
+        }
+        function rock() {
+            user = "rock"
+            comp = compMove()
+            winner = play(user, comp)
+            showResult()
+        }
+        function paper() {
+            user = "paper"
+            comp = compMove()
+            winner = play(user, comp)
+            showResult()
+        }
+        function scissors() {
+            user = "scissors"
+            comp = compMove()
+            winner = play(user, comp)
+            showResult()
+        }
+
+    </script>
+</body>
+
+</html>
