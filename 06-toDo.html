@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The toDOList</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 550px;
+            height: fit-content;
+            padding: 10px 25px;
+            margin: 30vh auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgb(166, 164, 164);
+            background-color: rgb(242, 222, 222);
+        }
+
+        h1 {
+            color: rgb(72, 14, 14);
+            text-align: center;
+            font-size: 30px;
+        }
+
+        p {
+            color: rgb(106, 48, 48);
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .div-input {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 10px;
+
+            input {
+                width: 400px;
+                height: 100%;
+                border-radius: 6px;
+                border: 1px solid lightgray;
+                padding-left: 15px;
+            }
+
+            input:hover {
+                border-color: rgb(106, 48, 48);
+            }
+
+            .date {
+                width: 130px;
+                height: 100%;
+                border-radius: 6px;
+                border: 1px solid lightgray;
+            }
+
+            .date:hover {
+                border-color: rgb(106, 48, 48);
+            }
+
+            button {
+                width: 40px;
+                height: 40px;
+                background-color: rgb(106, 48, 48);
+                border: none;
+                border-radius: 6px;
+                color: white;
+                font-size: 14px;
+            }
+
+            button:hover {
+                cursor: pointer;
+                background-color: rgb(64, 27, 27);
+            }
+
+        }
+
+        .list {
+            width: 100%;
+            height: fit-content;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+
+            .list-task {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                column-gap: 10px;
+
+                .list-task-name {
+                    width: 350px;
+                    height: 100%;
+                    padding-left: 15px;
+                    font-size: 14px;
+                }
+
+                .list-task-date {
+                    width: 130px;
+                    height: 100%;
+                    font-size: 14px;
+                    text-align: left;
+                }
+
+
+                button:hover {
+                    background-color: rgb(235, 52, 52);
+                    border-color: rgb(235, 52, 52);
+                }
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to The toDO list!</h1>
+        <p>Enter the task and choose the date then click on add ...</p>
+        <div class="div-input">
+            <input class="task" type="text" placeholder="add the task ...">
+            <input class="date" type="date" name="" id="">
+            <button onclick="addTask()">add</button>
+        </div>
+
+
+        <div class="list"></div>
+    </div>
+
+    <script>
+        let toDoList = []
+
+        function render() {
+            let toDoList_HTML = ""
+            for (let i = 0; i < toDoList.length; i++) {
+                let {name,duedate} = toDoList[i]
+                toDoList_HTML += `
+                <div class="list-task">
+                    <div class="list-task-name">${name}</div>
+                    <div class="list-task-date">${duedate}</div>
+                    <button onclick="delTask(${i})">
+                        X
+                    </button>
+                </div>
+                `
+            }
+            document.querySelector(".list").innerHTML = toDoList_HTML
+            document.querySelector(".task").value = ""
+            document.querySelector(".date").value = ""
+        }
+        function addTask() {
+            let task = document.querySelector(".task").value
+            let date = document.querySelector(".date").value
+            toDoList.push({name:task , duedate:date})
+            render()
+        }
+        function delTask(i) {
+            toDoList.splice(i, 1)
+            render()
+        }
+
+    </script>
+</body>
+
+</html>
