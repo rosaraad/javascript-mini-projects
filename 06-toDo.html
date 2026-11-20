@@ -14,33 +14,36 @@
             margin: 0;
             padding: 0;
             font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5e5e5;
         }
 
         .container {
             width: 550px;
             height: fit-content;
-            padding: 10px 25px;
+            padding: 20px 25px;
             margin: 30vh auto;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgb(166, 164, 164);
-            background-color: rgb(242, 222, 222);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(106, 48, 48, 0.13);
+            background-color: #fffafa;
         }
 
         h1 {
             color: rgb(72, 14, 14);
             text-align: center;
             font-size: 30px;
+            letter-spacing: -0.5px;
         }
 
         p {
             color: rgb(106, 48, 48);
             text-align: left;
-            font-size: 16px;
+            font-size: 15px;
+            margin-bottom: 22px;
         }
 
         .div-input {
             width: 100%;
-            height: 40px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -49,9 +52,17 @@
             input {
                 width: 400px;
                 height: 100%;
-                border-radius: 6px;
-                border: 1px solid lightgray;
+                border-radius: 8px;
+                border: 1px solid #e5cccc;
                 padding-left: 15px;
+                background-color: #fffdfd;
+                outline: none;
+                transition: 0.25s;
+            }
+
+            input:focus {
+                border-color: rgb(106, 48, 48);
+                box-shadow: 0 0 0 3px rgba(106, 48, 48, 0.09);
             }
 
             input:hover {
@@ -61,8 +72,10 @@
             .date {
                 width: 130px;
                 height: 100%;
-                border-radius: 6px;
-                border: 1px solid lightgray;
+                border-radius: 8px;
+                border: 1px solid #e5cccc;
+                background-color: #fffdfd;
+                padding: 0 5px;
             }
 
             .date:hover {
@@ -74,57 +87,87 @@
                 height: 40px;
                 background-color: rgb(106, 48, 48);
                 border: none;
-                border-radius: 6px;
+                border-radius: 8px;
                 color: white;
-                font-size: 14px;
+                font-size: 17px;
+                font-weight: bold;
+                transition: 0.25s;
+                box-shadow: 0 3px 8px rgba(106, 48, 48, 0.18);
             }
 
             button:hover {
                 cursor: pointer;
                 background-color: rgb(64, 27, 27);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 12px rgba(106, 48, 48, 0.22);
             }
-
         }
 
         .list {
             width: 100%;
             height: fit-content;
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 15px;
             display: flex;
             flex-direction: column;
-            row-gap: 15px;
+            row-gap: 12px;
 
             .list-task {
                 width: 100%;
-                height: 100%;
+                height: 48px;
+                padding: 5px 10px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 column-gap: 10px;
-
-                .list-task-name {
-                    width: 350px;
-                    height: 100%;
-                    padding-left: 15px;
-                    font-size: 14px;
-                }
-
-                .list-task-date {
-                    width: 130px;
-                    height: 100%;
-                    font-size: 14px;
-                    text-align: left;
-                }
-
-
-                button:hover {
-                    background-color: rgb(235, 52, 52);
-                    border-color: rgb(235, 52, 52);
-                }
+                background-color: #f8eeee;
+                border: 1px solid #efdada;
+                border-radius: 9px;
+                transition: 0.2s;
             }
 
+            .list-task:hover {
+                background-color: #f4e3e3;
+                box-shadow: 0 3px 10px rgba(106, 48, 48, 0.07);
+            }
 
+            .list-task-name {
+                width: 350px;
+                height: 100%;
+                padding-left: 10px;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                color: #572525;
+            }
+
+            .list-task-date {
+                width: 130px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                font-size: 13px;
+                color: #986c6c;
+                text-align: left;
+            }
+
+            button {
+                width: 30px;
+                height: 30px;
+                border: none;
+                border-radius: 7px;
+                background-color: #e9cccc;
+                color: #762d2d;
+                font-weight: bold;
+                transition: 0.2s;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: rgb(235, 52, 52);
+                color: white;
+                transform: scale(1.05);
+            }
         }
     </style>
 </head>
@@ -149,7 +192,7 @@
         function render() {
             let toDoList_HTML = ""
             for (let i = 0; i < toDoList.length; i++) {
-                let {name,duedate} = toDoList[i]
+                let { name, duedate } = toDoList[i]
                 toDoList_HTML += `
                 <div class="list-task">
                     <div class="list-task-name">${name}</div>
@@ -167,7 +210,12 @@
         function addTask() {
             let task = document.querySelector(".task").value
             let date = document.querySelector(".date").value
-            toDoList.push({name:task , duedate:date})
+
+            if (task == "" || date == "") {
+                alert("Please enter a task and pick a date!")
+            } else {
+                toDoList.push({ name: task, duedate: date })
+            }
             render()
         }
         function delTask(i) {
