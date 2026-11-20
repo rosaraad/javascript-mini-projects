@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Timer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #fff8dc, #ffe680);
+        }
+
+        .container {
+            width: 500px;
+            padding: 35px;
+            border-radius: 25px;
+            background-color: #fffdf5;
+            box-shadow: 0 15px 40px rgba(120, 95, 0, 0.15);
+            text-align: center;
+        }
+
+        h1 {
+            color: #5c4700;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #8a7635;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .counter {
+            width: fit-content;
+            height: fit-content;
+            margin: 20px auto;
+            font-size: 48px;
+            font-weight: bold;
+            color: #705500;
+        }
+
+        .btn {
+            height: 50px;
+            padding: 13px 22px;
+            border: none;
+            border-radius: 12px;
+            background-color: #f5c518;
+            color: #493800;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e6ad00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(180, 130, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Welcome to The Timer!</h1>
+
+        <p>press on start to start the timer and stop to stop it ...</p>
+
+        <div class="counter">
+            <span class="minute">- -</span>
+            <span>:</span>
+            <span class="second">- -</span>
+        </div>
+
+        <button class="btn">Start</button>
+
+    </div>
+
+    <script>
+
+        let interval;
+
+        let t = 0;
+        let m = 0;
+        let s = 0;
+
+        let btn = document.querySelector(".btn")
+        let minute = document.querySelector(".minute")
+        let second = document.querySelector(".second")
+
+        let btnEventStart = () => {
+            btn.innerHTML = "Stop"
+            t = 0
+            interval = setInterval(() => {
+                s = t % 60;
+                m = Math.floor(t / 60);
+                minute.innerHTML = String(m).length<2 ? "0"+m : m
+                second.innerHTML = String(s).length<2 ? "0"+s : s
+                t++
+            }, 1000)
+        }
+
+        let btnEventStop = () => {
+            btn.innerHTML = "Start"
+            clearInterval(interval)
+        }
+
+        btn.addEventListener("click", () => {
+            if (btn.innerHTML == "Start") {
+                btnEventStart()
+            } else {
+                btnEventStop()
+            }
+        })
+    </script>
+
+</body>
+
+</html>
