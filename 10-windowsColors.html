@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Windows Colors!</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 100px 100px;
+            grid-template-rows: 100px 100px;
+
+            .yellow,
+            .red,
+            .blue,
+            .green {
+                width: 100px;
+                height: 100px;
+            }
+
+            .yellow {
+                background-color: #FACC15;
+            }
+
+            .red {
+                background-color: #F87171;
+            }
+
+            .blue {
+                background-color: #60A5FA;
+            }
+
+            .green {
+                background-color: #4ADE80;
+            }
+
+
+            .yellow-page,
+            .red-page,
+            .blue-page,
+            .green-page {
+                position: fixed;
+                width: 50%;
+                height: 50%;
+                transition: 0.5s;
+            }
+
+            .yellow-page {
+                top: 0;
+                left: -100%;
+                background-color: #FACC15;
+
+            }
+
+            .red-page {
+                top: 0;
+                right: -100%;
+                background-color: #F87171;
+            }
+
+            .blue-page {
+                bottom: 0;
+                left: -100%;
+                background-color: #60A5FA;
+            }
+
+            .green-page {
+                bottom: 0;
+                right: -100%;
+                background-color: #4ADE80;
+            }
+        }
+
+        .yellow-page.show {
+            left: 0;
+        }
+
+        .red-page.show {
+            right: 0;
+        }
+
+        .blue-page.show {
+            left: 0;
+        }
+
+        .green-page.show {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="yellow color-box"></div>
+        <div class="yellow-page color-page"></div>
+
+        <div class="red color-box"></div>
+        <div class="red-page color-page"></div>
+
+        <div class="blue color-box"></div>
+        <div class="blue-page color-page"></div>
+
+        <div class="green color-box"></div>
+        <div class="green-page color-page"></div>
+
+    </div>
+
+    <script>
+        const colors = ["yellow", "red", "blue", "green"];
+
+        colors.forEach(color => {
+
+            const box = document.querySelector("." + color);
+            const page = document.querySelector("." + color + "-page");
+
+            box.addEventListener("click", () => {
+                page.classList.add("show");
+            });
+
+            page.addEventListener("click", () => {
+                page.classList.remove("show");
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
