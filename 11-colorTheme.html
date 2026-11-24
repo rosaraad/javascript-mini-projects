@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Color Theme!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .color-1,
+        .color-2,
+        .color-3,
+        .color-4,
+        .color-5,
+        .color-6,
+        .color-7,
+        .color-8,
+        .color-9,
+        .color-10 {
+            width: 100%;
+            height: 10.1vh;;
+            top: -10vh;
+            right: 0;
+            position: fixed;
+            transition: top 1s ease;
+        }
+
+        .color-1 {
+            background-color: #FFF0F3;
+            z-index: 10;
+        }
+
+        .color-2 {
+            background-color: #FFE0E6;
+            z-index: 9;
+        }
+
+        .color-3 {
+            background-color: #FFC2D1;
+            z-index: 8;
+        }
+
+        .color-4 {
+            background-color: #FFA3BA;
+            z-index: 7;
+        }
+
+        .color-5 {
+            background-color: #FF85A5;
+            z-index: 6;
+        }
+
+        .color-6 {
+            background-color: #FF7096;
+            z-index: 5;
+        }
+
+        .color-7 {
+            background-color: #F95D8A;
+            z-index: 4;
+        }
+
+        .color-8 {
+            background-color: #F4457D;
+            z-index: 3;
+        }
+
+        .color-9 {
+            background-color: #E93670;
+            z-index: 2;
+        }
+
+        .color-10 {
+            background-color: #D92763;
+            z-index: 1;
+        }
+
+        .click {
+            width: fit-content;
+            height: fit-content;
+            margin: 400px auto;
+            font-size: 30px;
+        }
+        .click:hover{
+            color: #D92763;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="colors">
+        <div class="color-1"></div>
+        <div class="color-2"></div>
+        <div class="color-3"></div>
+        <div class="color-4"></div>
+        <div class="color-5"></div>
+        <div class="color-6"></div>
+        <div class="color-7"></div>
+        <div class="color-8"></div>
+        <div class="color-9"></div>
+        <div class="color-10"></div>
+    </div>
+    <div class="click">Click for the show!</div>
+    <script>
+        click = document.querySelector(".click")
+        click.addEventListener("click", () => {
+            for (let i = 1; i <= 10; i++) {
+                color = document.querySelector(".color-" + i)
+                color.style.top = (i - 1) * 10 + "vh"
+            }
+        })
+    </script>
+</body>
+
+
+</html>
