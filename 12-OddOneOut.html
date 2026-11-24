@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Odd One Out!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f2f4;
+        }
+
+        .container {
+            width: 500px;
+            padding: 35px;
+            border-radius: 18px;
+            background-color: #ffffff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        h1 {
+            color: #30343b;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #858b94;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .words {
+            width: fit-content;
+            margin: 0 auto;
+            display: grid;
+            grid-template-rows: 70px 70px 70px 70px;
+            grid-template-columns: 80px 80px 80px 80px;
+            gap: 30px;
+
+            .word {
+                width: 80px;
+                height: 70px;
+                background-color: #ffffff;
+                color: #40444b;
+                border: 1px solid #d5d8dd;
+                box-sizing: border-box;
+                border-radius: 10px;
+                line-height: 70px;
+                position: relative;
+                overflow: hidden;
+
+                .mask {
+                    width: 100%;
+                    height: 100%;
+                    background-color: #555b64;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+
+        .result {
+            width: fit-content;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Welcome to The Odd One Out!</h1>
+
+        <p>move the mouse through the squares and click on the odd word ...</p>
+
+        <div class="words">
+            <div class="word">Lion
+                <div class="mask"></div>
+            </div>
+            <div class="word">Tiger
+                <div class="mask"></div>
+            </div>
+            <div class="word">Elephant
+                <div class="mask"></div>
+            </div>
+            <div class="word">Monkey
+                <div class="mask"></div>
+            </div>
+            <div class="word">Giraffe
+                <div class="mask"></div>
+            </div>
+            <div class="word">Zebra
+                <div class="mask"></div>
+            </div>
+            <div class="word answer">Bicycle
+                <div class="mask"></div>
+            </div>
+            <div class="word">Dolphin
+                <div class="mask"></div>
+            </div>
+            <div class="word">Kangaroo
+                <div class="mask"></div>
+            </div>
+            <div class="word">Rabbit
+                <div class="mask"></div>
+            </div>
+            <div class="word">Wolf
+                <div class="mask"></div>
+            </div>
+            <div class="word">Bear
+                <div class="mask"></div>
+            </div>
+            <div class="word">Fox
+                <div class="mask"></div>
+            </div>
+            <div class="word">Leopard
+                <div class="mask"></div>
+            </div>
+            <div class="word">Cheetah
+                <div class="mask"></div>
+            </div>
+            <div class="word">Crocodile
+                <div class="mask"></div>
+            </div>
+        </div>
+        <div class="result"></div>
+    </div>
+    <script>
+        word = document.querySelectorAll(".word")
+        mask = document.querySelectorAll(".mask")
+        answer = document.querySelector(".answer")
+        result = document.querySelector(".result")
+
+        let gameFinished = false;
+
+        mask.forEach(element => {
+            element.addEventListener("mouseenter", () => {
+                if (gameFinished) return;
+                element.style.top = "-70px";
+            })
+            element.addEventListener("mouseleave", () => {
+                if (gameFinished) return;
+                element.style.top = "0px";
+            })
+        });
+
+        word.forEach(element => {
+            element.addEventListener("click", () => {
+                if (gameFinished) return;
+                if (element === answer) {
+                    gameFinished = true;
+                    answer.querySelector(".mask").style.display = "none";
+                    answer.style.backgroundColor = "lightgreen";
+                    result.style.color= "green"
+                    result.innerHTML = "Correct! Bicycle is not an animal!";
+                } else {
+                    result.style.color = "red"
+                    result.innerHTML = "Wrong! Try again!";
+                }
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>
