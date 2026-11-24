@@ -23,11 +23,15 @@
         .color-9,
         .color-10 {
             width: 100%;
-            height: 10.1vh;;
+            height: 10.1vh;
+            ;
             top: -10vh;
             right: 0;
             position: fixed;
             transition: top 1s ease;
+            line-height: 10.1vh;
+            text-align: center;
+            font-size: 15px;
         }
 
         .color-1 {
@@ -80,13 +84,25 @@
             z-index: 1;
         }
 
+        h1 {
+            width: fit-content;
+            height: fit-content;
+            margin: 0 auto;
+            margin-top: 300px;
+            color: #D92763;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
         .click {
             width: fit-content;
             height: fit-content;
-            margin: 400px auto;
-            font-size: 30px;
+            margin: 20px auto;
+            color: #2c2d2e;
+            font-size: 16px;
         }
-        .click:hover{
+
+        .click:hover {
             color: #D92763;
             cursor: pointer;
         }
@@ -95,18 +111,19 @@
 
 <body>
     <div class="colors">
-        <div class="color-1"></div>
-        <div class="color-2"></div>
-        <div class="color-3"></div>
-        <div class="color-4"></div>
-        <div class="color-5"></div>
-        <div class="color-6"></div>
-        <div class="color-7"></div>
-        <div class="color-8"></div>
-        <div class="color-9"></div>
-        <div class="color-10"></div>
+        <div class="color-1">#FFF0F3</div>
+        <div class="color-2">#FFE0E6</div>
+        <div class="color-3">#FFC2D1</div>
+        <div class="color-4">#FFA3BA</div>
+        <div class="color-5">#FF85A5</div>
+        <div class="color-6">#FF7096</div>
+        <div class="color-7">#F95D8A</div>
+        <div class="color-8">#F4457D</div>
+        <div class="color-9">#E93670</div>
+        <div class="color-10">#D92763</div>
     </div>
-    <div class="click">Click for the show!</div>
+    <h1>Welcome to The Odd One Out!</h1>
+    <div class="click">click here for the show ...</div>
     <script>
         click = document.querySelector(".click")
         click.addEventListener("click", () => {
