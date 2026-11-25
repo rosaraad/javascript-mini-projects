@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Slider (Version 1)</title>
+    <title>The Slider</title>
     <style>
         body {
             background-color: rgb(248, 229, 206);
@@ -23,7 +23,7 @@
             }
 
             p {
-                width: fit-content;
+                width: 600px;
                 height: fit-content;
                 margin: 10px auto;
                 color: black;
@@ -107,8 +107,8 @@
 
 <body>
     <div class="container">
-        <h1>Welcome to The Slider (Version 1)!</h1>
-        <p>click on the prev and next button to go the previous or next item ...</p>
+        <h1>Welcome to The Slider!</h1>
+        <p>click on the prev and next button by mouse or press on right and left arrow on keyboard to go the previous or next item ...</p>
         <div class="slider">
             <div class="slides">
                 <div class="slide"><img src="images/slider-1.jpg" alt=""></div>
@@ -123,8 +123,8 @@
     </div>
 
     <script>
-        let counter = 0;
 
+        let counter = 0;
         let slides = document.querySelectorAll(".slide");
         let prev = document.querySelector(".prev");
         let next = document.querySelector(".next");
@@ -147,7 +147,9 @@
                 next.disabled = false;
             }
         }
+        isDisabled()
 
+        // Movement By Mouse Click
         prev.addEventListener("click", () => {
             if (counter > 0) {
                 counter--;
@@ -161,6 +163,25 @@
                 counter++;
                 moveSlider(counter);
                 isDisabled()
+            }
+        });
+
+
+        // Movement By Keyboard Press
+        window.addEventListener("keydown", (e) => {
+            if (e.key == "ArrowLeft") {
+                if (counter > 0) {
+                    counter--;
+                    moveSlider(counter);
+                    isDisabled();
+                }
+            }
+            else if (e.key == "ArrowRight") {
+                if (counter < slides.length - 1) {
+                    counter++;
+                    moveSlider(counter);
+                    isDisabled();
+                }
             }
         });
 
