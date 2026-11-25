@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Disco Ball</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: fit-content;
+            height: fit-content;
+            margin: 200px auto;
+
+            h1 {
+                width: fit-content;
+                height: fit-content;
+                margin: 30px auto;
+                color: black;
+            }
+
+            p {
+                width: fit-content;
+                height: fit-content;
+                margin: 10px auto;
+                color: black;
+                font-size: 16px;
+            }
+
+            .ball {
+                width: 200px;
+                height: 200px;
+                margin: 40px auto;
+                background-color: black;
+                border-radius: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to The Disco Ball!</h1>
+        <p>move your mouse on the ball to change the page's color ...</p>
+        <div class="ball"></div>
+    </div>
+
+    <script>
+        let body = document.querySelector("body")
+        let ball = document.querySelector(".ball")
+        let color = ""
+        ball.addEventListener("mousemove", (e) => {
+            color = `rgb(
+            ${Math.min(255, e.offsetX)}, 
+            ${Math.min(255, e.offsetY)}, 
+            ${Math.min(255, (Math.abs(e.offsetX - e.offsetY)))}
+            )`;
+            body.style.backgroundColor = color
+        })
+        ball.addEventListener("mouseleave", () => {
+            color = "white";
+            body.style.backgroundColor = color
+        })
+    </script>
+
+</body>
+
+</html>
