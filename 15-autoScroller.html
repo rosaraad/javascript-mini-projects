@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Auto Scroller</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 2000px;
+        }
+
+        .container {
+            width: fit-content;
+            height: fit-content;
+            margin: 200px auto;
+
+            h1 {
+                width: fit-content;
+                height: fit-content;
+                margin: 30px auto;
+                color: black;
+            }
+
+            p {
+                max-width: 400px;
+                height: fit-content;
+                margin: 10px auto;
+                color: black;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .scroller {
+                width: 40px;
+                height: 40px;
+                background-color: black;
+                color: white;
+                line-height: 40px;
+                text-align: center;
+                border-radius: 100%;
+                cursor: pointer;
+                position: fixed;
+                display: none;
+                right: 30px;
+                bottom: 30px;
+            }
+
+            .scroller:hover {
+                scale: 110%;
+                transition: all 0.2ms ease;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to The Auto Scroller!</h1>
+        <p>scroll down the page until the black circle appears, click on it to go back to the top ...</p>
+        <div class="scroller">UP</div>
+    </div>
+
+    <script>
+        let scroller = document.querySelector(".scroller")
+        scroller.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        })
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 500) {
+                scroller.style.display = "block"
+            } else {
+                scroller.style.display = "none"
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
