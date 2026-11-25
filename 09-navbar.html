@@ -116,20 +116,21 @@
     </div>
 
     <script>
-        if (window.innerWidth < 768) {
-            const submenu = document.querySelector(".submenu")
-            let menuState = "close"
-            function chaneMenuState() {
-                if (menuState === "close") {
-                    menuState = "open";
-                    submenu.style.display = "block";
-                }
-                else {
-                    menuState = "close";
-                    submenu.style.display = "none";
+        const submenu = document.querySelector(".submenu")
+            if (window.innerWidth < 768) {
+                let menuState = "close"
+                function chaneMenuState() {
+                    if (menuState === "close") {
+                        menuState = "open";
+                        submenu.style.display = "block";
+                    }
+                    else {
+                        menuState = "close";
+                        submenu.style.display = "none";
+                    }
                 }
             }
-        }
+
     </script>
 
 </body>
