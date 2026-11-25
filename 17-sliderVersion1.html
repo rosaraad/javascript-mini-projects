@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Slider (Version 1)</title>
     <style>
-        body{
+        body {
             background-color: rgb(248, 229, 206);
         }
+
         .container {
             width: fit-content;
             height: fit-content;
@@ -76,6 +77,12 @@
                     }
                 }
 
+                .prev:disabled,
+                .next:disabled {
+                    opacity: 50%;
+                    cursor: not-allowed;
+                }
+
                 .prev {
                     position: absolute;
                     top: 50%;
@@ -128,10 +135,24 @@
             });
         }
 
+        const isDisabled = () => {
+            if (counter === 0) {
+                prev.disabled = true;
+                next.disabled = false;
+            } else if (counter === slides.length - 1) {
+                prev.disabled = false;
+                next.disabled = true;
+            } else {
+                prev.disabled = false;
+                next.disabled = false;
+            }
+        }
+
         prev.addEventListener("click", () => {
             if (counter > 0) {
                 counter--;
                 moveSlider(counter);
+                isDisabled()
             }
         });
 
@@ -139,8 +160,11 @@
             if (counter < slides.length - 1) {
                 counter++;
                 moveSlider(counter);
+                isDisabled()
             }
         });
+
+
     </script>
 
 </body>
