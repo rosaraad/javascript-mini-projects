@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Slider (Version 1)</title>
     <style>
+        body{
+            background-color: rgb(248, 229, 206);
+        }
         .container {
             width: fit-content;
             height: fit-content;
-            margin: 200px auto;
+            margin: 160px auto;
 
             h1 {
                 width: fit-content;
@@ -27,8 +30,8 @@
             }
 
             .slider {
-                width: 700px;
-                height: 200px;
+                width: 1000px;
+                height: 300px;
                 margin: 50px auto;
                 position: relative;
 
@@ -121,7 +124,7 @@
 
         function moveSlider(counter) {
             slides.forEach((slide) => {
-                slide.style.translate = `${-700 * counter}px 0`;
+                slide.style.translate = `${-1000 * counter}px 0`;
             });
         }
 
