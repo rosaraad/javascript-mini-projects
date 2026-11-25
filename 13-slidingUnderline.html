@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sliding Underline</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(250, 219, 224);
+        }
+
+        .header {
+            background-color: black;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+
+            .menu {
+                width: fit-content;
+                height: fit-content;
+                display: flex;
+                column-gap: 20px;
+                margin: 0 auto;
+                position: relative;
+
+                .item {
+                    width: fit-content;
+                    height: 100%;
+                    text-align: center;
+
+                    a {
+                        text-decoration: none;
+                        color: white;
+                    }
+                }
+
+                .item:hover a {
+                    color: pink;
+                }
+
+
+                .underline {
+                    width: 0;
+                    height: 5px;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    background-color: pink;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+
+        .container {
+            h1 {
+                width: fit-content;
+                height: fit-content;
+                margin: 30px auto;
+                color: black;
+            }
+
+            p {
+                width: fit-content;
+                height: fit-content;
+                margin: 10px auto;
+                color: #2c2d2e;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="menu">
+            <div class="item">
+                <a href="">Home</a>
+            </div>
+            <div class="item">
+                <a href="">AboutUs</a>
+            </div>
+            <div class="item">
+                <a href="">ContactUs</a>
+            </div>
+            <div class="item">
+                <a href="">Gallery</a>
+            </div>
+            <div class="item">
+                <a href="">Services</a>
+            </div>
+            <div class="underline"></div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Welcome to The Sliding Underline!</h1>
+        <p>hover on the menu items and the underline will follow you ...</p>
+    </div>
+
+    <script>
+        items = document.querySelectorAll(".item")
+        underline = document.querySelector(".underline")
+
+        items.forEach(element => {
+            element.addEventListener("mouseenter", () => {
+                underline.style.width = element.offsetWidth + "px";
+                underline.style.left = element.offsetLeft + "px";
+            })
+            element.addEventListener("mouseleave", () => {
+                underline.style.width = 0;
+            })
+
+        });
+    </script>
+
+</body>
+
+</html>
